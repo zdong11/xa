@@ -10,13 +10,13 @@ const stdoutHandlerOptions = {
 	warn: 'yellow'
 };
 function stdoutHandler(options = stdoutHandlerOptions) {
-	return (type, label, message) => {
-		const color = options[type];
-		if (!color) {
+	return (type, label, message) => { 
+		if (!options[type]) {
 			process.stdout.write(
 				`${chalk.inverse.bold.white(label)} ${chalk.white(message)}\n`
 			);
 		} else {
+			const color = options[type];
 			process.stdout.write(
 				`${chalk.inverse.bold[color](label)} ${chalk[color](message)}\n`
 			);
